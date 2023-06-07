@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Complete your profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Complete your profile
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-label class="ion-text-wrap">
+      We just need a few more pieces of information to complete you profile.
+    </ion-label>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <ion-input placeholder="Weight" class="primary-input" type="number" [(ngModel)]="weight"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <span class="text-bold input-label">Kg</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="10">
+        <ion-input placeholder="Height" class="primary-input" type="number" [(ngModel)]="height"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <span class="text-bold input-label">m</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="10">
+        <ion-input placeholder="Daily calorie goal" class="primary-input" type="number" [(ngModel)]="calorieTarget"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <span class="text-bold input-label">cal</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" (click)="save()" [disabled]="!weight || !height || !calorieTarget" color="primary">
+    Save my profile
+  </ion-button>
+
+</ion-content>

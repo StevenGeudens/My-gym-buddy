@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Change date</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="setDate()">
+        <ion-icon slot="icon-only" name="checkmark" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Change date
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-datetime presentation="date" [(ngModel)]="selectedDate"></ion-datetime>
+
+</ion-content>

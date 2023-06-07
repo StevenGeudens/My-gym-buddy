@@ -1,0 +1,40 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Signup</h4>
+    <p>Register to get started</p>
+  </div>
+
+  <form [formGroup]="validationForm" (ngSubmit)="register(validationForm.value)">
+    <ion-input placeholder="Email" class="primary-input" formControlName="email"></ion-input>
+    <div class="ion-margin-bottom">
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <ion-text color="danger" *ngIf="validationForm.get('email').hasError(validation.type)">
+          {{validation.message}}
+        </ion-text>
+      </ng-container>
+    </div>
+
+    <ion-input placeholder="Password" type="password" class="primary-input" formControlName="password"></ion-input>
+    <div class="ion-margin-bottom">
+      <ng-container *ngFor="let validation of validationMessages.password">
+        <ion-text color="danger" *ngIf="validationForm.get('password').hasError(validation.type)">
+          {{validation.message}}
+        </ion-text>
+      </ng-container>
+    </div>
+
+    <p>By signing up you're agreed to our Terms & Conditions</p>
+
+    <div class="ion-margin-top">
+      <ion-button expand="block" type="submit" [disabled]="!validationForm.valid">Sign up</ion-button>
+    </div>
+  </form>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>

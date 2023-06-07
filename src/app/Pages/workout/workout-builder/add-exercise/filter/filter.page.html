@@ -1,0 +1,19 @@
+<ion-content class="ion-padding">
+  <div class="title">
+    <h1 class="text-bold">Filters</h1>
+    <a (click)="clearFilters()">Clear</a>
+  </div>
+
+  <h4 class="text-bold">Muscle</h4>
+  <ion-button *ngFor="let option of muscleOptions" size="small" [color]="option.isActive ? 'primary' : 'medium'" (click)="selectMuscleOption(option)">{{option.name}}</ion-button>
+
+  <h4 class="text-bold">Type</h4>
+  <ion-button *ngFor="let option of typeOptions" size="small" [color]="option.isActive ? 'primary' : 'medium'" (click)="selectTypeOption(option)">{{option.name}}</ion-button>
+
+  <h4 class="text-bold">Difficulty</h4>
+  <ion-button *ngFor="let option of difficultyOptions" size="small" [color]="option.isActive ? 'primary' : 'medium'" (click)="selectDifficultyOption(option)">{{option.name}}</ion-button>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="dismiss()">
+    Apply filter
+  </ion-button>
+</ion-content>

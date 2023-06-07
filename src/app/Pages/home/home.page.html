@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/profile']">
+        <ion-icon slot="icon-only" name="person-circle" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Home
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ng-template #loadingCard>
+    <ion-card-content class="ion-text-center">
+      <ion-spinner name="dots" color="white"></ion-spinner>
+    </ion-card-content>
+  </ng-template>
+
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-title>you're quote</ion-card-title>
+    </ion-card-header>
+
+    <div *ngIf="(quoteObservable | async); else loadingCard">
+      <ion-card-content>
+        {{quote}}
+      </ion-card-content>
+      <ion-card-content>
+        <i>{{author}}</i>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+  <ion-card class="ion-no-padding">
+    <ion-card-header>
+      <ion-card-title>Workout</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="ion-no-padding">
+        <ion-label>
+          <h1>{{completedWorkouts}}</h1>
+          <p>Completed workouts</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label>
+          <h1>{{incompleteWorkouts}}</h1>
+          <p>incomplete workouts</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nutrition</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <div *ngIf="nutritionChartData" echarts [options]="nutritionChartOptions" [merge]="nutritionChartData" class="calorie-chart"></div>
+          </ion-col>
+          <ion-col size="8">
+            <ion-item lines="none">
+              <ion-icon name="flag" slot="start" color="medium"></ion-icon>
+              <ion-label>
+                <h4>Goal</h4>
+                <p><ion-text color="dark" class="text-bold">{{userInfo?.calorieTarget}}</ion-text> cal</p>
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-icon name="Restaurant" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <h4>Food</h4>
+                <p><ion-text color="dark" class="text-bold">{{calorieIntake}}</ion-text> cal</p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <sub><ion-text color="medium">You have <ion-text color="dark" class="text-bold">{{caloriesRemaining}}</ion-text> calories left to consume.</ion-text></sub>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-no-padding">
+    <ion-card-header>
+      <ion-card-title>Progress</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          <p>Weight</p>
+          <h2 class="text-bold">{{currentWeight}}</h2>
+          <h4>Kg</h4>
+        </ion-label>
+        <ion-thumbnail slot="end" class="chart-container">
+          <div *ngIf="progressChartData" echarts [options]="progressChartOptions" [merge]="progressChartData" class="weight-chart"></div>
+        </ion-thumbnail>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <p>My BMI</p>
+          <h2 class="text-bold">{{bmi}}</h2>
+          <sub>Based on your weight and length</sub>
+          <ion-progress-bar [value]="bmiProgressBar" class="bmi-progress-bar"></ion-progress-bar>
+          <div class="bmi-labels-container">
+            <span><sub>underweight</sub></span>
+            <span><sub>healthy</sub></span>
+            <span><sub>overweight</sub></span>
+            <span><sub>obesity</sub></span>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

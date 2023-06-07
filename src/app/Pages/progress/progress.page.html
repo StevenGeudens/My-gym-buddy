@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/profile']">
+        <ion-icon slot="icon-only" name="person-circle" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Progress
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item button detail="true" [routerLink]="['weight']">
+    <ion-label>
+      <p>Weight</p>
+      <h2 class="text-bold">{{currentWeight}}</h2>
+      <h4>Kg</h4>
+    </ion-label>
+    <ion-thumbnail slot="end" class="chart-container">
+      <div *ngIf="chartData" echarts [options]="options" [merge]="chartData" class="weight-chart"></div>
+    </ion-thumbnail>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <p>My BMI</p>
+      <h2 class="text-bold">{{bmi}}</h2>
+      <sub>Based on your weight and length</sub>
+      <ion-progress-bar [value]="bmiProgressBar" class="bmi-progress-bar"></ion-progress-bar>
+      <div class="bmi-labels-container">
+        <span><sub>underweight</sub></span>
+        <span><sub>healthy</sub></span>
+        <span><sub>overweight</sub></span>
+        <span><sub>obesity</sub></span>
+      </div>
+    </ion-label>
+
+  </ion-item>
+
+</ion-content>

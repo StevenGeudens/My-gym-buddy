@@ -1,0 +1,28 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Edit weight (kg)</h4>
+  </div>
+
+  <form [formGroup]="validationForm" (ngSubmit)="update(validationForm.value)">
+    <ion-input placeholder="Weight" type="number" class="primary-input" formControlName="weight"></ion-input>
+    <div class="ion-margin-bottom">
+      <ng-container *ngFor="let validation of validationMessages.weight">
+        <ion-text color="danger" *ngIf="validationForm.get('weight').hasError(validation.type)">
+          {{validation.message}}
+        </ion-text>
+      </ng-container>
+    </div>
+
+    <div class="ion-margin-top">
+      <ion-button expand="block" type="submit" [disabled]="!validationForm.valid">Save changes</ion-button>
+    </div>
+  </form>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>

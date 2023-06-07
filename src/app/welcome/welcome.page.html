@@ -1,0 +1,23 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center" color="primary">
+  <div class="title">
+    <h1>Welcome</h1>
+    <p>Create a better lifestyle with the My Gym Buddy App!</p>
+  </div>
+  <div class="ion-margin-top">
+    <ion-button expand="block" class="ion-margin-top" fill="outline" color="white" (click)="register()">Sing up</ion-button>
+    <ion-button expand="block" class="ion-margin-top" color="white" (click)="login()">Login</ion-button>
+  </div>
+  <div class="ion-margin-top">
+    <p>Or sign in with</p>
+    <ion-button shape="circle" color="white" class="margin-horizontal" (click)="signInWithGoogle()">
+      <ion-icon name="logo-google" size="large"></ion-icon>
+    </ion-button>
+    <ion-button shape="circle" color="white" class="margin-horizontal" (click)="signInWithGithub()">
+      <ion-icon name="logo-github" size="large"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

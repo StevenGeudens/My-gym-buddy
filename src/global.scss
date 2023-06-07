@@ -1,0 +1,119 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.ion-color-white {
+	--ion-color-base: var(--ion-color-white);
+	--ion-color-base-rgb: var(--ion-color-white-rgb);
+	--ion-color-contrast: var(--ion-color-white-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
+	--ion-color-shade: var(--ion-color-white-shade);
+	--ion-color-tint: var(--ion-color-white-tint);
+}
+
+.login-modal, .register-modal {
+  --height: 45%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.add-weight-modal {
+  --height: 25%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.user-info-modal {
+  --height: 30%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.login-modal::part(backdrop), .register-modal::part(backdrop) {
+  background: rgb(0 0 0);
+  opacity: 1;
+}
+
+.primary-input {
+    background: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.07);
+    --padding-start: 10px !important;
+    color: var(--ion-text-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+ion-button[shape=circle] {
+  --border-radius: 50%;
+  width: 56px;
+  height: 56px;
+}
+
+ion-button[shape=circle][size=small] {
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+ion-toast.error-toast {
+  --background: var(--ion-color-danger);
+  --color: var(--ion-color-white);
+}
+ion-toast.error-toast::part(button) {
+  color: var(--ion-color-white);
+}
+
+ion-toast.success-toast {
+  --background: var(--ion-color-success);
+  --color: var(--ion-color-white);
+}
+ion-toast.success-toast::part(button) {
+  color: var(--ion-color-white);
+}
+
+// Utility classes
+.margin-0 {
+  margin: 0;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.loading-spinner-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #999999;
+}
+
+.d-block {
+  display: block;
+}

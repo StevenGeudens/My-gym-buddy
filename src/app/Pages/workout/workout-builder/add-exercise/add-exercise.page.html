@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Add a exercise
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="filter()">
+        <ion-icon name="options-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search for a exercise" [value]="searchText"
+      debounce="500" (ionChange)="searchChangeHandler($event)" animated="true"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Add a exercise
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ng-template #noResults>
+      <ion-item lines="none">
+        <ion-label>
+          <h1>Sorry, no exercises found :(</h1>
+        </ion-label>
+      </ion-item>
+  </ng-template>
+
+  <ng-template #loading>
+    <div class="loading-spinner-center" *ngIf="requestPending; else noResults">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-template>
+  
+  <div *ngIf="exercises.length !== 0; else loading">
+    <ion-list>
+      <ion-item *ngFor="let exercise of exercises">
+        <ion-label>
+          <h2>{{exercise.name}}</h2>
+          <p>{{exercise.muscle}} • {{exercise.equipment}}</p>
+        </ion-label>
+
+        <ion-checkbox *ngIf="checkIsChecked(exercise)" slot="end" (click)="onChange(exercise)" checked></ion-checkbox>
+        <ion-checkbox *ngIf="!checkIsChecked(exercise)" slot="end" (click)="onChange(exercise)"></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" class="spinner-container">
+    <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="ion-padding">
+    <ion-button class="ion-margin" (click)="addToWorkout()" [disabled]="checkedExercises.length === 0">
+      Add to workout
+    </ion-button>
+  </ion-fab>
+
+</ion-content>

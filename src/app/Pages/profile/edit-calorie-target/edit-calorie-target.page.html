@@ -1,0 +1,28 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Edit calorie target</h4>
+  </div>
+
+  <form [formGroup]="validationForm" (ngSubmit)="update(validationForm.value)">
+    <ion-input placeholder="Calorie target" type="number" class="primary-input" formControlName="calorieTarget"></ion-input>
+    <div class="ion-margin-bottom">
+      <ng-container *ngFor="let validation of validationMessages.calorieTarget">
+        <ion-text color="danger" *ngIf="validationForm.get('calorieTarget').hasError(validation.type)">
+          {{validation.message}}
+        </ion-text>
+      </ng-container>
+    </div>
+
+    <div class="ion-margin-top">
+      <ion-button expand="block" type="submit" [disabled]="!validationForm.valid">Save changes</ion-button>
+    </div>
+  </form>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>

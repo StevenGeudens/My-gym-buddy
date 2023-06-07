@@ -1,0 +1,46 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="white">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Workout complete</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="primary" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large" slot="primary">
+        Workout complete
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="trophy-icon-container ion-margin">
+    <ion-icon name="trophy" slot="primary" color="white"></ion-icon>
+  </div>
+
+  <div class="ion-text-center ion-margin">
+    <h1 class="text-bold">Well done</h1>
+    <h4>You completed the workout</h4>
+  </div>
+
+  <div class="ion-text-center ion-margin">
+    <ion-icon name="time" size="large"></ion-icon>
+    <span class="d-block text-bold">{{time}}</span>
+    <span class="d-block">Time</span>
+  </div>
+
+  <div class="ion-text-center ion-margin">
+    <ion-icon name="checkmark" size="large"></ion-icon>
+    <span class="d-block text-bold">{{exercisesDone}}</span>
+    <span class="d-block">Exercises</span>
+  </div>
+
+  <ion-button expand="block" color="primary" (click)="complete()" color="white" class="ion-margin">
+    Complete this workout
+  </ion-button>
+
+  </ion-content>

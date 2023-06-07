@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        {{title}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let exercise of exercises">
+      <ion-label>
+        <h2>{{exercise.name}}</h2>
+        <p>{{exercise.muscle}} • {{exercise.equipment}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="ion-padding">
+    <ion-button (click)="startWorkout()" color="primary">
+      <ion-icon name="play" slot="start"></ion-icon>
+      Start training
+    </ion-button>
+  </ion-fab>
+
+</ion-content>

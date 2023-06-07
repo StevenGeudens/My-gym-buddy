@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" color="dark">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-text class="text-bold" slot="start">{{timer}}</ion-text>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        {{title}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item lines="full">
+    <ion-label>
+      <h1 class="text-bold">{{activeExercise.name}}</h1>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-margin exercise-badges">
+    <ion-badge color="primary">{{activeExercise.type}}</ion-badge>
+    <ion-badge color="primary">{{activeExercise.muscle}}</ion-badge>
+    <ion-badge color="primary">{{activeExercise.equipment}}</ion-badge>
+    <ion-badge color="primary">{{activeExercise.difficulty}}</ion-badge>
+  </div>
+
+  <ion-accordion-group>
+    <ion-accordion>
+      <ion-item slot="header" color="none">
+        <ion-icon name="information" slot="start"></ion-icon>
+        <ion-label>Instructions</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        {{activeExercise.instructions}}
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+
+      <div class="set-buttons-container">
+
+        <div class="set-button-div" *ngFor="let set of activeExercise.sets">
+          <ion-badge color="primary" *ngIf="set.complete">
+            <ion-icon name="checkmark"></ion-icon>
+          </ion-badge>
+          <ion-button size="small" [color]="set.nr === activeSet.nr ? 'dark' : 'light'" (click)="goToSet(set)"><sub>Set</sub><span class="text-bold">{{set.nr}}</span></ion-button>
+        </div>
+
+      </div>
+
+    <ion-item lines="none">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+
+              <ion-item class="ion-text-center">
+                <ion-label position="stacked">Reps</ion-label>
+                <ion-input type="number" [(ngModel)]="activeSet.reps"></ion-input>
+              </ion-item>
+
+            </ion-col>
+            <ion-col>
+
+              <ion-item class="ion-text-center">
+                <ion-label position="stacked">Kg(s)</ion-label>
+                <ion-input type="number" [(ngModel)]="activeSet.kg"></ion-input>
+              </ion-item>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+    </ion-item>
+  <ion-button color="primary" expand="block" class="ion-margin-horizontal" (click)="next()">
+    Next
+  </ion-button>
+</ion-content>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">My gym buddy</string>
+    <string name="title_activity_main">My gym buddy</string>
+    <string name="package_name">com.geudens.steven.mygymbuddy</string>
+    <string name="custom_url_scheme">com.geudens.steven.mygymbuddy</string>
+</resources>

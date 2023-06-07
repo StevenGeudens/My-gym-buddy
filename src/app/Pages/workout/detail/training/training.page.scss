@@ -1,0 +1,27 @@
+.exercise-badges ion-badge {
+  margin: 0 2px 0 2px;
+}
+
+.set-button-div {
+    position: relative;
+    width: fit-content;
+    display: inline;
+    margin: 10px;
+    ion-badge {
+      position: absolute;
+      z-index: 99;
+      top: -5px;
+      right: -12px;
+    }
+  }  
+
+  .set-buttons-container{
+    display: flex;
+    justify-content: center;
+  }
+
+.set-complete-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
